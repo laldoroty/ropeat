@@ -10,6 +10,9 @@ import astropy.units as u
 from astropy.visualization import ZScaleInterval
 import sep
 
+# IMPORTS Internal:
+from .utils import get_obj_type_from_ID
+
 ###########################################################################
 
 """
@@ -94,5 +97,6 @@ def catalog_matching(objtab, catalog, wcs):
     catalog['detection'][idx] = 1
     detected_objects = hstack([catalog[idx], objtab])
     merged_tables = join(catalog,detected_objects,join_type='outer')
+    merged_tables['objtype'] = list(map(get_obj_type_from_ID,merged_tables['object_id']))
 
     return merged_tables
