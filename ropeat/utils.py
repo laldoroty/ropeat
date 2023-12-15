@@ -1,21 +1,19 @@
 def get_obj_type_from_ID(ID):
-    if ID<3e7:
-        return 'SNIa'
-    elif ID<4e7:
-        return 'SNII'
-    elif ID<5e7:
-        return 'SNIb'
-    elif ID<6e7:
-        return 'SNIc'
-    elif ID<7e7:
-        return 'SNIax'
-    elif ID<8e7:
-        return 'PISN-He'
-    elif ID<9e7:
-        return 'PISN-Hy'
-    elif ID<10**7.1:
-        return 'KN'
-    elif ID<10**9.3:
-        return 'star'
-    else:
+    if ID > 9921000000000 and ID < 10779202101973:
         return 'galaxy'
+    elif ID > 30328699913 and ID < 50963307358:
+        return 'star'
+    elif ID > 20000001 and ID < 120026449:
+        return 'transient'
+    else:
+        return 'unknown'
+
+def train_config(objtype):
+    if objtype == 'galaxy':
+        return 0
+    elif objtype == 'star':
+        return 1
+    elif objtype == 'transient':
+        return 2
+    else: 
+        return 3
