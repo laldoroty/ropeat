@@ -8,6 +8,7 @@ import numpy as np
 
 # Internal imports
 from .utils import train_config
+from .plotting import classification_contours
 
 """
 Train a Random Forest Classifier on star/galaxy truth coordinates.
@@ -19,7 +20,6 @@ def train_model(train_table,test_size=0.4,random_state=42):
     Inputs: flux, max pixel, ellipticity for galaxies and stars. 
     Astropy table with sum of flux in pixels, max pixel value, ellipticity, and object type.
 
-    
     """
 
     train_table = train_table.to_pandas()
@@ -43,3 +43,10 @@ def train_model(train_table,test_size=0.4,random_state=42):
     scores = {'score': score, 'accuracy': accuracy, 'precision': precision, 'recall': recall}
 
     return model, data, scores
+
+def plot_contours(data, **kwargs):
+    classification_contours(data, **kwargs)
+
+def plot_confusionmatrix(data):
+    cm = confusion_matrix(data['y_test'], data['y_pred'])
+    ConfusionMatrixDisplay(confusion_matrix=cm,display_labels=['Galaxy', 'Star']).plot()

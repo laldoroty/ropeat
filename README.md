@@ -5,6 +5,7 @@ This package is modular. Modules are compatible with each other, and they interf
 easily, but you do not need to use all the modules. It contains:
 ```
 sourcedetection.py
+objectidentification.py
 photometry.py
 ```
 
