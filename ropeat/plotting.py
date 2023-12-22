@@ -88,7 +88,7 @@ def classification_contours(data,
                             cmap='Set3', 
                             plotxlims=None, plotylims=None,
                             contourxlims=(0,1e5+5000), contourylims=(0,9e6), 
-                            e_slices = [0.0, 0.2, 0.4, 0.6]
+                            e_slices = [0.0, 0.2, 0.4, 0.6],
                             savefig=False, savepath='figs/classification_model.png'):
 
     fig, ax = plt.subplots(2,2, figsize=(12,12), dpi=300, sharex=True, sharey=True)
