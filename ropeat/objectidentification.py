@@ -44,8 +44,8 @@ def train_model(train_table,test_size=0.4,random_state=42):
 
     return model, data, scores
 
-def plot_contours(data, **kwargs):
-    classification_contours(data, **kwargs)
+def plot_contours(data, model, **kwargs):
+    classification_contours(data, model, **kwargs)
 
 def plot_confusionmatrix(data):
     cm = confusion_matrix(data['y_test'], data['y_pred'])

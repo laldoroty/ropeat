@@ -84,11 +84,12 @@ def roman_sca_plot(data_array,sca_order,ptype='image',residual_plot=True,clabel=
 
     plt.show()
 
-def classification_contours(data,
+def classification_contours(data, model,
                             cmap='Set3', 
                             plotxlims=None, plotylims=None,
                             contourxlims=(0,1e5+5000), contourylims=(0,9e6), 
                             e_slices = [0.0, 0.2, 0.4, 0.6],
+                            title=None,
                             savefig=False, savepath='figs/classification_model.png'):
 
     fig, ax = plt.subplots(2,2, figsize=(12,12), dpi=300, sharex=True, sharey=True)
@@ -132,6 +133,9 @@ def classification_contours(data,
     fig.supxlabel('Maximum pixel value')
     fig.supylabel('Flux', x=.04)
     ax[0,0].legend(loc='upper left')
+
+    if title is not None:
+        fig.suptitle(title)
 
     if savefig:
         plt.savefig(savepath, bbox_inches='tight', dpi=300)
